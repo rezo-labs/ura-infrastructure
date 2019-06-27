@@ -1,0 +1,26 @@
+# Miscellaneous
+node_modules/*
+*.log*
+playground/*
+**/.DS_Store
+
+# Dist
+dist/index.js
+dist/index.js.map
+dist/loadable-stats.json
+dist/bundle-report.html
+dist/lint-report.html
+dist/public/*
+!dist/public/.gitkeep
+dist/templates/*
+!dist/templates/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Coverage
+coverage
+
+# Configs
+configs
