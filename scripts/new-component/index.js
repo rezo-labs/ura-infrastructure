@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const { APP_DIR } = require('../../constants');
+const { COMPONENTS_DIR } = require('../../constants');
 const {
     indexJSContent,
     componentContent,
@@ -11,6 +11,7 @@ const {
 } = require('./templates');
 const {
     errorHandler,
+    successHandler,
 } = require('../utils');
 const {
     validateComponent,
@@ -52,7 +53,7 @@ inquirer
             classComponent,
             storyBook,
         } = answers;
-        const dirPath = path.resolve(APP_DIR, 'components', directory);
+        const dirPath = path.resolve(COMPONENTS_DIR, directory);
         const componentDirectory = path.resolve(dirPath, component);
 
         if (!fs.existsSync(dirPath)) {
@@ -72,4 +73,5 @@ inquirer
         if (storyBook) {
             fs.writeFileSync(path.join(componentDirectory, `${component}.story.js`), storyBookContent(component));
         }
+        successHandler(`${component} is successfully created!`);
     });
