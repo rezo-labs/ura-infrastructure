@@ -19,6 +19,7 @@ const outputPath = path.resolve(__dirname, '../../dist/lint-report.html');
 fs.writeFile(outputPath, formatter(report.results), (err) => {
     if (err) {
         errorHandler(err);
+        return;
     }
     console.log(`Lint report is at ${outputPath}.`);
     opn(outputPath);

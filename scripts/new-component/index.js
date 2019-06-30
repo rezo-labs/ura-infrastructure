@@ -42,7 +42,7 @@ inquirer
             type: 'confirm',
             name: 'storyBook',
             message: 'Use storybook?',
-            default: false,
+            default: true,
         },
     ])
     .then((answers) => {
@@ -57,10 +57,12 @@ inquirer
 
         if (!fs.existsSync(dirPath)) {
             errorHandler(`Directory ${dirPath} does not exist.`);
+            return;
         }
 
         if (fs.existsSync(componentDirectory)) {
             errorHandler(`Component already exists at ${componentDirectory}`);
+            return;
         }
 
         fs.mkdirSync(componentDirectory);
