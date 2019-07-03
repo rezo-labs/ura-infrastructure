@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const logSymbols = require('log-symbols');
 const webpack = require('webpack');
+const WebpackBar = require('webpackbar');
 const merge = require('webpack-merge');
 const constants = require('./constants.js');
 
@@ -46,6 +47,7 @@ module.exports = ({ SSR = false }) => merge(client, {
                 SSR: SSR || config.SSR,
             },
         })),
+        new WebpackBar(),
     ],
 
 });
