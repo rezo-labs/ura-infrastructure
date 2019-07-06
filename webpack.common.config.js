@@ -60,6 +60,11 @@ module.exports.client = {
                 },
             },
             {
+                type: 'javascript/auto',
+                test: /\.json/,
+                loader: 'json-loader',
+            },
+            {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
