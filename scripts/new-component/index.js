@@ -68,7 +68,7 @@ inquirer
 
         fs.mkdirSync(componentDirectory);
         fs.writeFileSync(path.join(componentDirectory, 'index.js'), indexJSContent(component));
-        fs.writeFileSync(path.join(componentDirectory, `${component}.js`), componentContent(component, classComponent));
+        fs.writeFileSync(path.join(componentDirectory, `${component}.jsx`), componentContent(component, classComponent));
         fs.writeFileSync(path.join(componentDirectory, `${component}.test.js`), testContent(component));
         if (storyBook) {
             fs.writeFileSync(path.join(componentDirectory, `${component}.story.js`), storyBookContent(component));
