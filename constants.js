@@ -9,6 +9,7 @@ const APP_DIR = path.resolve(WORK_DIR, 'src', 'app');
 const SERVER_DIR = path.resolve(WORK_DIR, 'src', 'server');
 const DIST_DIR = path.resolve(WORK_DIR, 'dist');
 const STATIC_DIR = path.resolve(WORK_DIR, 'static');
+const CONFIGS_DIR = path.resolve(WORK_DIR, 'configs');
 // level 2
 const COMPONENTS_DIR = path.resolve(APP_DIR, 'components');
 const SRC_TEMPLATES_DIR = path.resolve(SERVER_DIR, 'templates');
@@ -37,6 +38,7 @@ module.exports = {
     SERVER_DIR,
     DIST_DIR,
     STATIC_DIR,
+    CONFIGS_DIR,
     COMPONENTS_DIR,
     SRC_TEMPLATES_DIR,
     DIST_TEMPLATES_DIR,

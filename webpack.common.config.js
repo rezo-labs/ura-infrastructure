@@ -50,6 +50,17 @@ module.exports.client = {
                 ],
             },
             {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            configFile: path.resolve(constants.CONFIGS_DIR, 'tsconfig.json'),
+                        },
+                    },
+                ],
+            },
+            {
                 test: /\.jsx?/,
                 use: {
                     loader: 'babel-loader',
@@ -72,7 +83,7 @@ module.exports.client = {
     },
 
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
 
     plugins: [
@@ -105,6 +116,17 @@ module.exports.server = {
     module: {
         rules: [
             {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            configFile: path.resolve(constants.CONFIGS_DIR, 'tsconfig.json'),
+                        },
+                    },
+                ],
+            },
+            {
                 test: /\.jsx?/,
                 loader: 'babel-loader',
                 options: {
@@ -134,7 +156,7 @@ module.exports.server = {
     },
 
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
             components: path.resolve(constants.APP_DIR, 'components'),
             reducers: path.resolve(constants.APP_DIR, 'redux/reducers'),
