@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const WebpackBar = require('webpackbar');
 const constants = require('./constants.js');
 
 const { config } = constants;
@@ -93,6 +94,7 @@ module.exports.client = {
             },
             outputAsset: false, // prevent creating of 2 files
         }),
+        new WebpackBar(),
     ],
 
 };
