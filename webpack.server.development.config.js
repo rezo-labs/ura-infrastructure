@@ -11,6 +11,8 @@ const constants = require('./constants.js');
 const { server } = require('./webpack.common.config.js');
 
 const { config } = constants;
+const commonConfig = config.webpack && config.webpack.server && config.webpack.server.common;
+const devConfig = config.webpack && config.webpack.server && config.webpack.server.dev;
 
 // Development mode
 module.exports = ({ SSR = false }) => merge(server, {
@@ -59,4 +61,4 @@ module.exports = ({ SSR = false }) => merge(server, {
         }),
     ],
 
-});
+}, commonConfig, devConfig);

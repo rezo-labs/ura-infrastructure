@@ -12,6 +12,10 @@ const constants = require('./constants.js');
 // Get common config
 const { client } = require('./webpack.common.config.js');
 
+const { config } = constants;
+const commonConfig = config.webpack && config.webpack.client && config.webpack.client.common;
+const prodConfig = config.webpack && config.webpack.client && config.webpack.client.prod;
+
 // Production mode
 console.log(logSymbols.info, chalk.green.bold('PRODUCTION MODE'));
 module.exports = ({ SSR = true, openAnalyzer = false }) => merge(client, {
@@ -56,4 +60,4 @@ module.exports = ({ SSR = true, openAnalyzer = false }) => merge(client, {
         }),
     ],
 
-});
+}, commonConfig, prodConfig);

@@ -9,6 +9,8 @@ const constants = require('./constants.js');
 const { server } = require('./webpack.common.config.js');
 
 const { config } = constants;
+const commonConfig = config.webpack && config.webpack.server && config.webpack.server.common;
+const prodConfig = config.webpack && config.webpack.server && config.webpack.server.prod;
 
 // Production mode
 module.exports = ({ SSR = true }) => merge(server, {
@@ -33,4 +35,4 @@ module.exports = ({ SSR = true }) => merge(server, {
         }]),
     ],
 
-});
+}, commonConfig, prodConfig);

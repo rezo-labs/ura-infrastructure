@@ -4,10 +4,12 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const constants = require('./constants.js');
 
-const { config } = constants;
-
 // Get common config
 const { client } = require('./webpack.common.config.js');
+
+const { config } = constants;
+const commonConfig = config.webpack && config.webpack.client && config.webpack.client.common;
+const devConfig = config.webpack && config.webpack.client && config.webpack.client.dev;
 
 // Development mode
 console.log(logSymbols.info, chalk.red.bold('DEVELOPMENT MODE'));
@@ -48,4 +50,4 @@ module.exports = ({ SSR = false }) => merge(client, {
         })),
     ],
 
-});
+}, commonConfig, devConfig);
