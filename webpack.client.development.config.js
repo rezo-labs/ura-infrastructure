@@ -27,7 +27,7 @@ module.exports = ({ SSR = false }) => merge(client, {
     devServer: {
         historyApiFallback: true,
         inline: true,
-        host: 'localhost',
+        host: '0.0.0.0',
         port: config.WEBPACK_PORT,
         publicPath: '/build/',
         proxy: {
