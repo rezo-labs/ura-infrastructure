@@ -35,7 +35,6 @@ module.exports = ({ SSR = false }) => merge(client, {
                 target: constants.LOCALHOST,
             },
         },
-        open: true,
         stats: 'minimal',
         overlay: true,
     },
