@@ -80,6 +80,10 @@ module.exports.client = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
+            },
         ],
     },
 
@@ -153,6 +157,17 @@ module.exports.server = {
             {
                 test: /\.(s?css|sass)$/,
                 loader: 'ignore-loader',
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: '@svgr/webpack',
+                        options: {
+                            native: true,
+                        },
+                    },
+                ],
             },
         ],
     },
