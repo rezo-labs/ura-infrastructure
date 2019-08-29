@@ -29,12 +29,14 @@ module.exports = ({ config }) => {
     // Use svgr webpack to import svg as react component
     rules.push({
         test: /\.svg$/,
-        use: [{
-        loader: '@svgr/webpack',
-        options: {
-            icon: true,
-        },
-        }],
+        use: [
+            {
+                loader: '@svgr/webpack',
+                options: {
+                    icon: true,
+                },
+            }
+        ],
     });
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
