@@ -1,9 +1,9 @@
 const path = require('path');
 const constants = require('../constants.js');
 
-const { config, APP_DIR } = constants;
+const { config, COMPONENTS_DIR } = constants;
 
-const pathToInlineSvg = path.resolve(APP_DIR, 'components/Icon/svg');
+const pathToInlineSvg = path.resolve(COMPONENTS_DIR, 'Icon/svg');
 
 
 module.exports = ({ config }) => {
