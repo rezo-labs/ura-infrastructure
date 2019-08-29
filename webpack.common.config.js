@@ -82,7 +82,12 @@ module.exports.client = {
             },
             {
                 test: /\.svg$/,
-                use: ['@svgr/webpack'],
+                use: [{
+                    loader: '@svgr/webpack',
+                    options: {
+                        icon: true,
+                    },
+                }],
             },
         ],
     },
@@ -160,14 +165,12 @@ module.exports.server = {
             },
             {
                 test: /\.svg$/,
-                use: [
-                    {
-                        loader: '@svgr/webpack',
-                        options: {
-                            native: true,
-                        },
+                use: [{
+                    loader: '@svgr/webpack',
+                    options: {
+                        icon: true,
                     },
-                ],
+                }],
             },
         ],
     },

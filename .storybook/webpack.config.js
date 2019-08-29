@@ -1,22 +1,20 @@
 const path = require('path');
 const constants = require('../constants.js');
 
-const { config } = constants;
+const { config, APP_DIR } = constants;
 
-const pathToInlineSvg = path.resolve(__dirname, '../../src/app/components/Icon/svg');
+const pathToInlineSvg = path.resolve(APP_DIR, 'components/Icon/svg');
 
 
 module.exports = ({ config }) => {
-    console.log('pathToInlineSvg', pathToInlineSvg);
     const rules = config.module.rules;
 
-    // // modify storybook's file-loader rule to avoid conflicts with svgr
+    // modify storybook's file-loader rule to avoid conflicts with svgr
     const fileLoaderRule = rules.find(rule => rule.test.test('.svg'));
-    console.log('fileLoaderRule', fileLoaderRule);
 
     fileLoaderRule.exclude = pathToInlineSvg;
 
-    config.module.rules.push({
+    rules.push({
         test: /\.(ts|tsx)$/,
         use: [
             {
@@ -27,7 +25,9 @@ module.exports = ({ config }) => {
             },
         ],
     });
-    config.module.rules.push({
+
+    // Use svgr webpack to import svg as react component
+    rules.push({
         test: /\.svg$/,
         use: [{
         loader: '@svgr/webpack',
