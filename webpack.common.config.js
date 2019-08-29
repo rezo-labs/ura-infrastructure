@@ -54,9 +54,9 @@ module.exports.client = {
                 test: /\.tsx?$/,
                 use: [
                     {
-                        loader: 'ts-loader',
+                        loader: 'awesome-typescript-loader',
                         options: {
-                            configFile: path.resolve(constants.CONFIGS_DIR, 'tsconfig.json'),
+                            configFileName: path.resolve(constants.CONFIGS_DIR, 'tsconfig.json'),
                         },
                     },
                 ],
@@ -130,9 +130,9 @@ module.exports.server = {
                 test: /\.tsx?$/,
                 use: [
                     {
-                        loader: 'ts-loader',
+                        loader: 'awesome-typescript-loader',
                         options: {
-                            configFile: path.resolve(constants.CONFIGS_DIR, 'tsconfig.json'),
+                            configFileName: path.resolve(constants.CONFIGS_DIR, 'tsconfig.json'),
                         },
                     },
                 ],
