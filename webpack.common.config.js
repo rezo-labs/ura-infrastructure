@@ -27,7 +27,7 @@ module.exports.client = {
     module: {
         rules: [
             {
-                test: /\.(ico|svg|gif|png|jpe?g)$/,
+                test: /\.(ico|gif|png|jpe?g)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -151,7 +151,7 @@ module.exports.server = {
                 loader: 'json-loader',
             },
             {
-                test: /\.(png|svg|jpe?g|gif|ico)$/,
+                test: /\.(png|jpe?g|gif|ico)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[name]-[md5:hash:hex:6].[ext]',
