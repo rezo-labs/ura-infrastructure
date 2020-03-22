@@ -2,6 +2,8 @@ const chalk = require('chalk');
 const logSymbols = require('log-symbols');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const autoprefixer = require('autoprefixer');
+const sass = require('sass');
 const constants = require('./constants.js');
 
 // Get common config
@@ -37,6 +39,39 @@ module.exports = ({ SSR = false }) => merge(client, {
         },
         stats: 'minimal',
         overlay: true,
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.(scss|sass)$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: { minimize: false }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function () {
+                                return [autoprefixer({
+                                    browsers: config.CSS_PREFIX
+                                })]
+                            }
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            implementation: sass,
+                        },
+                    }
+                ]
+            },
+        ]
     },
 
     plugins: [
