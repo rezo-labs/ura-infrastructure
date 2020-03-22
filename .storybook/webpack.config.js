@@ -1,4 +1,6 @@
 const path = require('path');
+const autoprefixer = require('autoprefixer');
+const sass = require('sass');
 const constants = require('../constants.js');
 
 const { config, COMPONENTS_DIR } = constants;
@@ -24,7 +26,34 @@ module.exports = ({ config }) => {
                 }
             },
         ],
-    });
+    }, {
+        test: /\.(scss|sass)$/,
+        use: [
+            {
+                loader: 'style-loader',
+            },
+            {
+                loader: 'css-loader',
+                options: { minimize: false }
+            },
+            {
+                loader: 'postcss-loader',
+                options: {
+                    plugins: function () {
+                        return [autoprefixer({
+                            browsers: config.CSS_PREFIX
+                        })]
+                    }
+                }
+            },
+            {
+                loader: 'sass-loader',
+                options: {
+                    implementation: sass,
+                },
+            }
+        ]
+    },);
 
     // Use svgr webpack to import svg as react component
     rules.push({
